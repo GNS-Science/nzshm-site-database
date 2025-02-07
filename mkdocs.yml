@@ -1,0 +1,82 @@
+site_name: New Zealand Site Characterization Database
+site_url: https://gns-science.github.io/nzshm-site-database
+repo_url: https://github.com/gns-science/nzshm-site-database
+repo_name: gns-science/nzshm-site-database
+
+nav:
+  - About: index.md
+  - The Database: database.md
+
+theme:
+  name: material
+  language: en
+  #logo: assets/logo.png
+  palette:
+    # Palette toggle for light mode
+    - scheme: default
+      toggle:
+        icon: material/brightness-7 
+        name: Switch to dark mode
+
+    # Palette toggle for dark mode
+    - scheme: slate
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  features:
+    - navigation.indexes
+    - navigation.instant
+    - navigation.tabs
+  #   - navigation.tabs.sticky
+markdown_extensions:
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - toc:
+      baselevel: 2
+      permalink: true
+      slugify: !!python/name:pymdownx.slugs.uslugify
+  - tables
+  - admonition
+  - footnotes  
+  - pymdownx.details
+
+extra_javascript:
+  - https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js
+  - javascripts/tablesort.js
+
+#  - meta
+# markdown_extensions:
+#   - pymdownx.emoji:
+#       emoji_index: !!python/name:materialx.emoji.twemoji
+#       emoji_generator: !!python/name:materialx.emoji.to_svg
+#   - pymdownx.critic
+#   - pymdownx.caret
+#   - pymdownx.mark
+#   - pymdownx.tilde
+#   - pymdownx.tabbed
+#   - attr_list
+#   - pymdownx.arithmatex:
+#       generic: true
+#   - pymdownx.highlight:
+#       linenums: false
+#   - pymdownx.superfences
+#   - pymdownx.inlinehilite
+#   - pymdownx.details
+ 
+plugins:
+  - include-markdown
+  - search:
+      lang: en
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/gns-science/nzshm-site-database
+      name: Github
+    - icon: material/email
+      link: "mailto:nshm@gns.cri.nz"
+#google_analytics:
+  #- UA-xxx
+  #- auto
