@@ -1,7 +1,7 @@
 site_name: New Zealand Site Characterization Database
-site_url: https://gns-science.github.io/nzshm-site-database
-repo_url: https://github.com/gns-science/nzshm-site-database
-repo_name: gns-science/nzshm-site-database
+site_url: https://chrisdicaprio.github.io/nzshm-site-database
+repo_url: https://github.com/chrisdicaprio/nzshm-site-database
+repo_name: chrisdicaprio/nzshm-site-database
 docs_dir: nzshm_site_database
 
 nav:
@@ -57,7 +57,7 @@ plugins:
 extra:
   social:
     - icon: fontawesome/brands/github
-      link: https://github.com/gns-science/nzshm-site-database
+      link: https://github.com/chrisdicaprio/nzshm-site-database
       name: Github
     - icon: material/email
       link: "mailto:nshm@gns.cri.nz"
