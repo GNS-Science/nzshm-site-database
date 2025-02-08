@@ -5,9 +5,9 @@ repo_name: chrisdicaprio/nzshm-site-database
 docs_dir: nzshm_site_database
 
 nav:
-  - About: docs/index.md
-  - The Database: docs/database.md
-  - Supporting Data: docs/sites.md
+  - About: index.md
+  - The Database: database.md
+  - Supporting Data: sites.md
 
 theme:
   name: material

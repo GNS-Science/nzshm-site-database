@@ -1,2 +1,0 @@
-- [AKLS](https://github.com/chrisdicaprio/nzshm-site-database/tree/main/nzshm_site_database/resources/sites/AKLS){:target="_blank"}
-- [EBFS](https://github.com/chrisdicaprio/nzshm-site-database/tree/main/nzshm_site_database/resources/sites/EBFS){:target="_blank"}
