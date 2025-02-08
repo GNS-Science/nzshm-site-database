@@ -2,4 +2,4 @@
 
  This repository contains the Site Characterization Database, supporting data, and documentation.
 
-See the [documentation](https://gns-science.github.io/nzshm-site-database) for more infomation.
+See the [documentation](https://chrisdicaprio.github.io/nzshm-site-database) for more infomation.
