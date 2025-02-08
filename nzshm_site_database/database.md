@@ -1,3 +1,3 @@
-[Download the database](../resources/sitedb.csv)
+[Download the database](resources/sitedb.csv)
 
-{{ read_csv('../resources/sitedb.csv') }}
+{{ read_csv('resources/sitedb.csv') }}
