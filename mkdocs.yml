@@ -2,12 +2,13 @@ site_name: New Zealand Site Characterization Database
 site_url: https://gns-science.github.io/nzshm-site-database
 repo_url: https://github.com/gns-science/nzshm-site-database
 repo_name: Gns-science/nzshm-site-database
-docs_dir: nzshm_site_database
+docs_dir: nzshm_site_database/docs
 
 nav:
   - About: index.md
   - The Database: database.md
   - Supporting Data: sites.md
+  - Help: help.md
 
 theme:
   name: material
