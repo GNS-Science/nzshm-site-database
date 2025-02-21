@@ -1,9 +1,11 @@
 from pathlib import Path
 from typing import Generator, Tuple
+import git
 
 # update version
 docs_dir = Path("nzshm_site_database/docs")
 VERSION_STR = "####VERSION####"
+repo_path = Path(__file__).parent.parent.parent
 
 def find_docs(docs_dir: Path) -> Generator[Path, None, None]:
     for child in docs_dir.iterdir():
@@ -13,7 +15,7 @@ def find_docs(docs_dir: Path) -> Generator[Path, None, None]:
             yield child
 
 def get_version() -> Tuple[str, str]:
-    repo = Path(__file__).parent.parent.parent
+    repo = git.Repo(repo_path)
     head = repo.head.commit
     for tag in repo.tags:
         if repo.head.commit == tag.commit:
