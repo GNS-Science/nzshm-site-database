@@ -1,3 +1,7 @@
+---
+hide:
+    - navigation
+---
 You are viewing the current version of the Database ####VERSION####.
 
 
