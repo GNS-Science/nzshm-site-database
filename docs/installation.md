@@ -1,6 +1,6 @@
 # Installation
 
-Instructions for installing the repository on your local computer. Note that this is not required for updating and maintaining the database. However, you may find it continent to use the git CLI for your workflow.
+Instructions for installing the repository on your local computer. Note that this is not required for updating and maintaining the database. However, you may find it convenient to use the git CLI for your workflow.
 
 If you are using ssh for GitHub authentication (reccomended) follow [these instructions](https://docs.github.com/en/authentication/connecting-to-github-with-ssh).
 
