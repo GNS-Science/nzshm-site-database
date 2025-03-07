@@ -2,7 +2,7 @@ from pathlib import Path
 from typing import Generator, Tuple
 import git
 
-VERSION_STR = "####VERSION####"
+from jinja2 import Environment, FileSystemLoader
 
 REPO_PATH = Path(__file__).parent.parent.parent
 ROOT_DIR = REPO_PATH / "nzshm_site_database"
@@ -10,8 +10,8 @@ DOCS_DIR = ROOT_DIR / "docs"
 TEMPLATE_DIR = ROOT_DIR / "templates"
 DATA_DIR = ROOT_DIR / "data"
 SITES_DIR = DATA_DIR / "sites"
-SITES_TEMPLATE_FILEPATH = TEMPLATE_DIR / "sites.md"
 REPO_URL = "github.com/GNS-Science/nzshm-site-database"
+
 
 def find_templates(templates_dir: Path) -> Generator[Path, None, None]:
     """Walk the templates directory to find all files with .md extension"""
@@ -19,7 +19,7 @@ def find_templates(templates_dir: Path) -> Generator[Path, None, None]:
         if child.is_dir():
             yield from find_templates(child)
         elif child.suffix == ".md":
-            yield child
+            yield child.name
 
 def get_version() -> Tuple[str, str]:
     """Find the version tag that matches the current commit. Raise exception if there is no tag for the commit."""
@@ -29,49 +29,34 @@ def get_version() -> Tuple[str, str]:
             return tag.name, tag.commit.hexsha
     raise Exception("no tags found at the current commit")
 
-def update_docs_with_version(template_filepath: Path, version_name: str, docs_dir: Path):
-    with template_filepath.open() as template_file:
-        contents = template_file.read()
-    contents = contents.replace(VERSION_STR, version_name)
-    out_filepath = docs_dir / template_filepath.name
-    with out_filepath.open('w') as doc_file:
-        doc_file.write(contents)
-    print("wrote to", out_filepath)
-    
-def get_sites(sites_dir: Path) -> Generator[Tuple[str, str], None, None]:
+def get_sites(sites_dir: Path) -> list[dict]:
     """Find all directories under the sites_dir directory. These are assumed to be sites in the database.
 
     Returns:
         site: tuple of str, first is the site name (final dir name), second is the path to the
         directory relative to the REPO_PATH 
     """
+    sites = []
     for child in sites_dir.iterdir():
-        yield str(child.name), str(child.relative_to(REPO_PATH))
-
-def site_text(site_name: str, site_path: str, version: str, repo_url: str) -> str:
-    """Return markdown string for a site entry in the sites.md document file.
-
-    Includes the name of the site and a link to the GitHub location using the path to the
-    specified version tag (can be a tag or commit hash).
-    """
-    url = f"https://{repo_url}/tree/{version}/{site_path}"
-    return f"## [{site_name}]({url})\n"
-
-
-
-def update_sites_file(sites_template_filepath: Path, sites_dir: Path, version: str, template_dir: Path, docs_dir: Path):
-    file_str = sites_template_filepath.read_text()
-    file_str = file_str[0:file_str.find("####")] + "\n"
-    for site_name, site_path in get_sites(sites_dir):
-        file_str += site_text(site_name, site_path, version, REPO_URL)
-    out_filepath = docs_dir / sites_template_filepath.name
-    out_filepath.write_text(file_str)
-
+        sites.append(
+            {"name": str(child.name), "path": str(child.relative_to(REPO_PATH))}
+        )
+    return sites
 
 if __name__ == "__main__":
     version_name, version_sha = get_version()
     DOCS_DIR.mkdir(exist_ok=True)
-    for file_path in find_templates(TEMPLATE_DIR):
-        update_docs_with_version(file_path, version_name, DOCS_DIR)
+    environment = Environment(loader=FileSystemLoader(TEMPLATE_DIR))
 
-    update_sites_file(SITES_TEMPLATE_FILEPATH, SITES_DIR, version_name, TEMPLATE_DIR, DOCS_DIR)
+    args = dict(
+        version=version_name,
+        repo_url=REPO_URL,
+    )
+    sites = get_sites(SITES_DIR)
+    args['sites'] = sites
+
+    for template_name in find_templates(TEMPLATE_DIR):
+        template = environment.get_template(template_name)
+        content = template.render(args)
+        rendered_filepath = DOCS_DIR / template_name
+        rendered_filepath.write_text(content)
