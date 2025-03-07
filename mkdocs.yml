@@ -8,6 +8,7 @@ nav:
   - About: index.md
   - The Database: database.md
   - Supporting Data: sites.md
+  - Previous Versions: previous_versions.md
   - Help: help.md
 
 theme:

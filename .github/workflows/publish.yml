@@ -67,6 +67,7 @@ jobs:
 
       - name: Build documentation
         run: |
+          poetry run python nzshm_site_database/scripts/build_docs.py
           poetry run mkdocs build
 
       - name: Upload artifact
