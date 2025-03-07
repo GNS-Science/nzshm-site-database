@@ -7,16 +7,17 @@ VERSION_STR = "####VERSION####"
 REPO_PATH = Path(__file__).parent.parent.parent
 ROOT_DIR = REPO_PATH / "nzshm_site_database"
 DOCS_DIR = ROOT_DIR / "docs"
+TEMPLATE_DIR = ROOT_DIR / "templates"
 DATA_DIR = ROOT_DIR / "data"
 SITES_DIR = DATA_DIR / "sites"
-SITES_DOC_FILEPATH = DOCS_DIR / "sites.md"
+SITES_TEMPLATE_FILEPATH = TEMPLATE_DIR / "sites.md"
 REPO_URL = "github.com/GNS-Science/nzshm-site-database"
 
-def find_docs(docs_dir: Path) -> Generator[Path, None, None]:
-    """Walk the documents directory to find all files with .md extension"""
-    for child in docs_dir.iterdir():
+def find_templates(templates_dir: Path) -> Generator[Path, None, None]:
+    """Walk the templates directory to find all files with .md extension"""
+    for child in templates_dir.iterdir():
         if child.is_dir():
-            yield from find_docs(child)
+            yield from find_templates(child)
         elif child.suffix == ".md":
             yield child
 
@@ -28,12 +29,14 @@ def get_version() -> Tuple[str, str]:
             return tag.name, tag.commit.hexsha
     raise Exception("no tags found at the current commit")
 
-def update_docs_with_version(doc_filepath: Path, version_name: str):
-    with doc_filepath.open() as doc_file:
-        contents = doc_file.read()
-        contents = contents.replace(VERSION_STR, version_name)
-    with doc_filepath.open('w') as doc_file:
+def update_docs_with_version(template_filepath: Path, version_name: str, docs_dir: Path):
+    with template_filepath.open() as template_file:
+        contents = template_file.read()
+    contents = contents.replace(VERSION_STR, version_name)
+    out_filepath = docs_dir / template_filepath.name
+    with out_filepath.open('w') as doc_file:
         doc_file.write(contents)
+    print("wrote to", out_filepath)
     
 def get_sites(sites_dir: Path) -> Generator[Tuple[str, str], None, None]:
     """Find all directories under the sites_dir directory. These are assumed to be sites in the database.
@@ -56,17 +59,19 @@ def site_text(site_name: str, site_path: str, version: str, repo_url: str) -> st
 
 
 
-def update_sites_file(sites_doc_filepath: Path, sites_dir: Path, version: str):
-    file_str = sites_doc_filepath.read_text()
+def update_sites_file(sites_template_filepath: Path, sites_dir: Path, version: str, template_dir: Path, docs_dir: Path):
+    file_str = sites_template_filepath.read_text()
     file_str = file_str[0:file_str.find("####")] + "\n"
     for site_name, site_path in get_sites(sites_dir):
         file_str += site_text(site_name, site_path, version, REPO_URL)
-    sites_doc_filepath.write_text(file_str)
+    out_filepath = docs_dir / sites_template_filepath.name
+    out_filepath.write_text(file_str)
 
 
 if __name__ == "__main__":
     version_name, version_sha = get_version()
-    for file_path in find_docs(DOCS_DIR):
-        update_docs_with_version(file_path, version_name)
+    DOCS_DIR.mkdir(exist_ok=True)
+    for file_path in find_templates(TEMPLATE_DIR):
+        update_docs_with_version(file_path, version_name, DOCS_DIR)
 
-    update_sites_file(SITES_DOC_FILEPATH, SITES_DIR, version_name)
+    update_sites_file(SITES_TEMPLATE_FILEPATH, SITES_DIR, version_name, TEMPLATE_DIR, DOCS_DIR)
