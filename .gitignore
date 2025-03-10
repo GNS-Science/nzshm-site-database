@@ -1,5 +1,5 @@
 # project specific
-nzshm_site_database/docs/
+nzshm_site_database/docs/*md
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
