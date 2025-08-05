@@ -2,8 +2,10 @@
 
 ## Using git CLI on your computer
 
-Create a new branch
+Fetch and merge any changes on the `main` branch from the remote server and then create a new branch
 ```console
+$ git switch main
+$ git pull
 $ git checkout -b new-branch
 ```
 where `new-branch` is the name of your branch. Give it an informative name.
