@@ -12,6 +12,18 @@ where `new-branch` is the name of your branch. Give it an informative name.
 
 Then add or modify files.
 
+### (Optional) Test updates
+You can build the site before commiting or pushing any changes. The links to the supporting site data will not work as they direct to GitHub, but you will be able to check that the links are created.
+
+Before running the build commands, create a temporary tag. A tag is required by the build process to track versions.
+
+```
+$ git tag test-tag
+```
+`test-tag` can be any string as long as it does not start with `v` which is reserved for publishing an official release.
+[Run](installation.md#test-the-website) the site locally to test the updates.
+
+### Commit and push
 Add files and commit changes
 ```console
 $ git add file1 file2 file3
@@ -22,6 +34,7 @@ Push the commits to the remote (GitHub)
 ```console
 $ git push --set-upstream origin new-branch
 ```
+
 
 ## Using GitHub web
 

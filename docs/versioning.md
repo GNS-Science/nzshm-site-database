@@ -1,1 +1,0 @@
-Do we version changes to documentation? Could be confusing to users?

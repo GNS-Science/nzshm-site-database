@@ -29,18 +29,24 @@ def get_version() -> Tuple[str, str]:
             return tag.name, tag.commit.hexsha
     raise Exception("no tags found at the current commit")
 
-def get_sites(sites_dir: Path) -> list[dict]:
-    """Find all directories under the sites_dir directory. These are assumed to be sites in the database.
+def get_sites(sites_dir: Path, sort: bool=True) -> list[dict]:
+    """Find all directories under the sites_dir directory.
+
+    Args:
+        sites_dir: the directory containing site data (each site in a sub-folder named for the site).
+        sort: sites are sorted alphabetically if True
 
     Returns:
         site: tuple of str, first is the site name (final dir name), second is the path to the
-        directory relative to the REPO_PATH 
+        directory relative to the REPO_PATH. Sites are in 
     """
     sites = []
     for child in sites_dir.iterdir():
         sites.append(
             {"name": str(child.name), "path": str(child.relative_to(REPO_PATH))}
         )
+    if sort:
+        sites.sort(key=lambda site: site["name"])
     return sites
 
 if __name__ == "__main__":
