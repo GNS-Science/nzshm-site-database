@@ -5,7 +5,7 @@ repo_name: Gns-science/nzshm-site-database
 docs_dir: nzshm_site_database/docs
 
 nav:
-  - About: index.md
+  - New Zealand Site Characterization Database: index.md
   - The Database: database.md
   - Supporting Data: sites.md
   - Previous Versions: previous_versions.md
