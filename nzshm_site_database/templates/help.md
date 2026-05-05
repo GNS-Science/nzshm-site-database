@@ -2,4 +2,4 @@
 hide:
     - navigation
 ---
-Details on the database and support for users.
+For more information please [email the New Zealand NSHM](mailto:nshm@earthsciences.nz).
