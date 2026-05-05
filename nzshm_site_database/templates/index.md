@@ -8,4 +8,4 @@ The Supporting Data is the invasive and non-invasive site investigation data tha
 
 Further information on the New Zealand NSHM can be found on the [NSHM website](https://www.gns.cri.nz/research-projects/national-seismic-hazard-model/) and the [NSHM webapp](https://nshm.gns.cri.nz/).
 
-For more information please [email the New Zealand NSHM](mailto:nshm@earthsciences.nz)
+For more information please [email the New Zealand NSHM](nshm@earthsciences.nz)
