@@ -29,7 +29,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: create github release
         id: create_release
@@ -40,20 +40,15 @@ jobs:
           draft: false
           prerelease: false
 
-      - name: setup Python 
-        uses: actions/setup-python@v5
-        with:
-          python-version: "3.12"
-
       - name: Setup Pages
         id: pages
-        uses: actions/configure-pages@v5
+        uses: actions/configure-pages@v6
 
-      - name: Install uv
-        uses: astral-sh/setup-uv@v6
+      - name: Install Python and uv
+        uses: GNS-Science/nshm-github-actions/.github/actions/python-install-uv@main
         with:
-          enable-cache: true
-          cache-dependency-glob: uv.lock
+          python-version: "3.12"
+          install-dependencies: "false"
 
       - name: Install dependencies
         run: |
@@ -65,7 +60,7 @@ jobs:
           uv run --no-sync mkdocs build
 
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v5
         with:
           path: ./site        
 
@@ -80,4 +75,4 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
