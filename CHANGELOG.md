@@ -1,0 +1,7 @@
+# Changelog
+
+## [Unreleased]
+
+- build: migrate Poetry → uv, add ruff; require Python 3.12
+- deps: major: mkdocs-table-reader-plugin 3→4, mkdocstrings 0.28→1.0, mkdocstrings-python 1→2, pytest 8→9 (fixes PYSEC-2026-1845)
+- deps: minor: nzshm-common 0.9.4→0.10.1
