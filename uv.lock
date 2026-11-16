@@ -1137,11 +1137,11 @@ wheels = [
 
 [[package]]
 name = "nzshm-common"
-version = "0.9.4"
+version = "0.10.1"
 source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/70/cc/ad2063f93335d2ef19099adbb8032870e9420c2be4616056066a835029f3/nzshm_common-0.9.4.tar.gz", hash = "sha256:5f985f4e76fbe36bbaa5987b1bd08ecdc1b2183e4e023f279b1db6b2b3dd877c", size = 269324, upload-time = "2026-03-30T22:45:43.151Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/a1/92/1c41ce7ae36020ca0cd9271bbad8cf4a4e9c3841140ba09450fa14a3ad30/nzshm_common-0.10.1.tar.gz", hash = "sha256:3b93943adecc052070bff1e94be3b1c49b649c6ae305e79308ae3c9d4f690c80", size = 268193, upload-time = "2026-11-09T01:27:31.624Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/c6/a0/215dac876966fbf9d7cf216b9e3b6be4ae82e8e3889cc0be59e52b6c7239/nzshm_common-0.9.4-py3-none-any.whl", hash = "sha256:d2d18df08d7ed58b6922b653c7321907de46e1c5d59c77df7d4d3ba4c95d9175", size = 289751, upload-time = "2026-03-30T22:45:41.798Z" },
+    { url = "https://files.pythonhosted.org/packages/e0/a8/9cafbf1e5268f36fdb8166ab11fa3da7947e297ea698945c938a3cb48219/nzshm_common-0.10.1-py3-none-any.whl", hash = "sha256:3b84592a3e2fa49cf7e677397b8b0010fcde9fd1944b33fccfdcb501ea75b4cc", size = 290184, upload-time = "2026-11-09T01:27:30.306Z" },
 ]
 
 [[package]]
@@ -1192,7 +1192,7 @@ dev = [
     { name = "pytest", specifier = ">=9.0.3,<10.0" },
     { name = "ruff" },
 ]
-doc = [{ name = "nzshm-common", specifier = ">=0.9.4,<0.10.0" }]
+doc = [{ name = "nzshm-common", specifier = ">=0.10.1,<0.11.0" }]
 
 [[package]]
 name = "packaging"
