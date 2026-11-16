@@ -1,7 +1,7 @@
+from collections.abc import Generator
 from pathlib import Path
-from typing import Generator, Tuple
-import git
 
+import git
 from jinja2 import Environment, FileSystemLoader
 
 REPO_PATH = Path(__file__).parent.parent.parent
@@ -21,24 +21,30 @@ def find_templates(templates_dir: Path) -> Generator[Path, None, None]:
         elif child.suffix == ".md":
             yield child.name
 
-def get_version() -> Tuple[str, str]:
-    """Find the version tag that matches the current commit. Raise exception if there is no tag for the commit."""
+
+def get_version() -> tuple[str, str]:
+    """Find the version tag that matches the current commit.
+
+    Raise exception if there is no tag for the commit.
+    """
     repo = git.Repo(REPO_PATH)
     for tag in repo.tags:
         if repo.head.commit == tag.commit:
             return tag.name, tag.commit.hexsha
     raise Exception("no tags found at the current commit")
 
-def get_sites(sites_dir: Path, sort: bool=True) -> list[dict]:
+
+def get_sites(sites_dir: Path, sort: bool = True) -> list[dict]:
     """Find all directories under the sites_dir directory.
 
     Args:
-        sites_dir: the directory containing site data (each site in a sub-folder named for the site).
+        sites_dir: the directory containing site data (each site in a sub-folder
+            named for the site).
         sort: sites are sorted alphabetically if True
 
     Returns:
-        site: tuple of str, first is the site name (final dir name), second is the path to the
-        directory relative to the REPO_PATH. Sites are in 
+        site: tuple of str, first is the site name (final dir name), second is the
+        path to the directory relative to the REPO_PATH. Sites are in
     """
     sites = []
     for child in sites_dir.iterdir():
@@ -48,6 +54,7 @@ def get_sites(sites_dir: Path, sort: bool=True) -> list[dict]:
     if sort:
         sites.sort(key=lambda site: site["name"])
     return sites
+
 
 if __name__ == "__main__":
     version_name, version_sha = get_version()

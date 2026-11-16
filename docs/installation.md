@@ -24,7 +24,13 @@ $ cd nzshm-site-database
 
 Python virtual environments are used to keep dependencies of different projects separate from one another to avoid clashes and to make sure you are using the correct version of python. See [the documentation for more information](https://docs.python.org/3/library/venv.html).
 
-You can use a package manager such as [poetry](https://python-poetry.org/) to install the package, but these instructions will use `venv` and `pip`
+The recommended way is [uv](https://docs.astral.sh/uv/):
+```console
+$ uv sync --all-groups
+```
+Then prefix commands with `uv run` (e.g. `uv run mkdocs serve`).
+
+Alternatively, use `venv` and `pip`:
 ```console
 $ python3.10 -m venv ~/.virtualenv/nzshm-site-database
 ```
