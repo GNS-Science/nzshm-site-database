@@ -2,7 +2,7 @@
 name = "nzshm-site-database"
 version = "0.1.0"
 description = "the Site Characterization Database for the New Zealand National Seismic Hazard Model (NSHM)"
-authors = [{ name = "Your Name", email = "you@example.com" }]
+authors = [{ name = "NSHM Project", email = "nshm@earthsciences.nz" }]
 readme = "README.md"
 requires-python = ">=3.12,<4.0"
 dependencies = [
