@@ -13,7 +13,7 @@ dependencies = [
     "mkdocstrings>=0.28.0,<0.29.0",
     "mkdocstrings-python>=1.14.5,<2.0",
     "mkdocs-pymdownx-material-extras>=2.7,<3.0",
-    "mkdocs-table-reader-plugin>=3.1.0,<4.0",
+    "mkdocs-table-reader-plugin>=4.0.2,<5.0",
     "gitpython>=3.1.44,<4.0",
     "jinja2>=3.1.6,<4.0",
 ]
