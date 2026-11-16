@@ -4,7 +4,7 @@ Instructions for installing the repository on your local computer. Note that thi
 
 If you are using ssh for GitHub authentication (reccomended) follow [these instructions](https://docs.github.com/en/authentication/connecting-to-github-with-ssh).
 
-The project requires python version 3.10 or above; these instructions will use python3.10
+The project requires python version 3.12 or above; these instructions will use python3.12
 
 ## Clone the repository
 
@@ -24,9 +24,15 @@ $ cd nzshm-site-database
 
 Python virtual environments are used to keep dependencies of different projects separate from one another to avoid clashes and to make sure you are using the correct version of python. See [the documentation for more information](https://docs.python.org/3/library/venv.html).
 
-You can use a package manager such as [poetry](https://python-poetry.org/) to install the package, but these instructions will use `venv` and `pip`
+The recommended way is [uv](https://docs.astral.sh/uv/):
 ```console
-$ python3.10 -m venv ~/.virtualenv/nzshm-site-database
+$ uv sync --all-groups
+```
+Then prefix commands with `uv run` (e.g. `uv run mkdocs serve`).
+
+Alternatively, use `venv` and `pip`:
+```console
+$ python3.12 -m venv ~/.virtualenv/nzshm-site-database
 ```
 
 You can then start your virtual environmnet:
