@@ -4,7 +4,7 @@ Instructions for installing the repository on your local computer. Note that thi
 
 If you are using ssh for GitHub authentication (reccomended) follow [these instructions](https://docs.github.com/en/authentication/connecting-to-github-with-ssh).
 
-The project requires python version 3.10 or above; these instructions will use python3.10
+The project requires python version 3.12 or above; these instructions will use python3.12
 
 ## Clone the repository
 
@@ -32,7 +32,7 @@ Then prefix commands with `uv run` (e.g. `uv run mkdocs serve`).
 
 Alternatively, use `venv` and `pip`:
 ```console
-$ python3.10 -m venv ~/.virtualenv/nzshm-site-database
+$ python3.12 -m venv ~/.virtualenv/nzshm-site-database
 ```
 
 You can then start your virtual environmnet:

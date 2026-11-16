@@ -4,14 +4,14 @@ version = "0.1.0"
 description = "the Site Characterization Database for the New Zealand National Seismic Hazard Model (NSHM)"
 authors = [{ name = "Your Name", email = "you@example.com" }]
 readme = "README.md"
-requires-python = ">=3.10,<4.0"
+requires-python = ">=3.12,<4.0"
 dependencies = [
     "mkdocs>=1.6.1,<2.0",
     "mkdocs-include-markdown-plugin>=7.1.3,<8.0",
     "mkdocs-material>=9.6.2,<10.0",
     "mkdocs-material-extensions>=1.3.1,<2.0",
-    "mkdocstrings>=1.0,<2.0",
-    "mkdocstrings-python>=2.0,<3.0",
+    "mkdocstrings>=1.0.8,<2.0",
+    "mkdocstrings-python>=2.0.10,<3.0",
     "mkdocs-pymdownx-material-extras>=2.7,<3.0",
     "mkdocs-table-reader-plugin>=4.0.2,<5.0",
     "gitpython>=3.1.44,<4.0",
